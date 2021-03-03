@@ -36,8 +36,8 @@ class PhoboIngredient extends Component {
   }
 }
 
-PhoboIngredient.PropTypes = {
-  type: PropTypes.string.isRequired
+PhoboIngredient.propTypes = {
+  type: PropTypes.string.isRequired,
 };
 
 export default PhoboIngredient;
