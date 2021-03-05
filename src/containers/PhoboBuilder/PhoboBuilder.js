@@ -22,7 +22,7 @@ class PhoboBuilder extends Component {
   };
 
   addIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients(type);
+    const oldCount = this.state.ingredients[type];
     const updateCount = oldCount + 1;
     const updatedIngredients = { ...this.state.ingredients };
     updatedIngredients[type] = updateCount;
