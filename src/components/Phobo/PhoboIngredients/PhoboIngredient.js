@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classes from "./PhoboIngredient.css";
+import PhoboSteam from "./PhoboSteam";
 
 class PhoboIngredient extends Component {
   render() {
@@ -11,10 +12,7 @@ class PhoboIngredient extends Component {
         break;
       case "bread-top":
         ingredient = (
-          <div className={classes.BreadTop}>
-            <div className={classes.Seeds1}></div>
-            <div className={classes.Seeds2}></div>
-          </div>
+          <PhoboSteam/>
         );
         break;
       case "meat":
