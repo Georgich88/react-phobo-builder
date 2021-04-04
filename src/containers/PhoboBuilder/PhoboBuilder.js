@@ -22,7 +22,12 @@ class PhoboBuilder extends Component {
     },
     totalPrice: 4,
     purchasable: false,
+    purchasing: false,
   };
+
+  purchaseHandler = () => {
+    this.setState({ purchasing: true });
+  }
 
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
@@ -69,7 +74,7 @@ class PhoboBuilder extends Component {
     }
     return (
       <Aux>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary ingredients={this.state.ingredients}></OrderSummary>
         </Modal>
         <Phobo ingredients={this.state.ingredients} />
@@ -78,6 +83,7 @@ class PhoboBuilder extends Component {
           ingredientsRemoved={this.removeIngredientHandler}
           disabled={disableInfo}
           purchasable={this.state.purchasable}
+          ordered={this.purchaseHandler}
           price={this.state.totalPrice}
         />
       </Aux>
