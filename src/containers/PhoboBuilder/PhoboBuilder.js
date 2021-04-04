@@ -19,7 +19,17 @@ class PhoboBuilder extends Component {
       meat: 0,
     },
     totalPrice: 4,
+    purchasable: false,
   };
+
+  updatePurchaseState(ingredients) {
+    const sum = Object.keys(ingredients)
+      .map((igKey) => {
+        return ingredients[igKey];
+      })
+      .reduce((sum, el) => sum + el, 0);
+    this.setState({ purchasable: sum > 0 });
+  }
 
   addIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
@@ -30,6 +40,7 @@ class PhoboBuilder extends Component {
     const priceAddition = INGREDIENT_PRICES[type];
     const newPrice = oldPrice + priceAddition;
     this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
+    this.updatePurchaseState(updatedIngredients);
   };
 
   removeIngredientHandler = (type) => {
@@ -43,13 +54,14 @@ class PhoboBuilder extends Component {
       const newPrice =
         priceDeduction < oldPrice ? oldPrice - priceDeduction : 0;
       this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
+      this.updatePurchaseState(updatedIngredients);
     }
   };
 
   render() {
     const disableInfo = {
-      ...this.state.ingredients
-    }
+      ...this.state.ingredients,
+    };
     for (let key in disableInfo) {
       disableInfo[key] = disableInfo[key] <= 0;
     }
@@ -60,6 +72,7 @@ class PhoboBuilder extends Component {
           ingredientsAdded={this.addIngredientHandler}
           ingredientsRemoved={this.removeIngredientHandler}
           disabled={disableInfo}
+          purchasable={this.state.purchasable}
           price={this.state.totalPrice}
         />
       </Aux>
