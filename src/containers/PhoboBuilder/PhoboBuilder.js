@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import Phobo from "../../components/Phobo/Phobo";
-import BuildControls from "../../components/BuildControls/BuildControls";
+import BuildControls from "../../components/Phobo/BuildControls/BuildControls";
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/Phobo/OrderSummary/OrderSummary";
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -67,6 +69,9 @@ class PhoboBuilder extends Component {
     }
     return (
       <Aux>
+        <Modal>
+          <OrderSummary ingredients={this.state.ingredients}></OrderSummary>
+        </Modal>
         <Phobo ingredients={this.state.ingredients} />
         <BuildControls
           ingredientsAdded={this.addIngredientHandler}
