@@ -27,7 +27,7 @@ class PhoboBuilder extends Component {
 
   purchaseHandler = () => {
     this.setState({ purchasing: true });
-  }
+  };
 
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
@@ -65,6 +65,10 @@ class PhoboBuilder extends Component {
     }
   };
 
+  purchaseCancelHandler = () => {
+    this.setState({ purchasing: false });
+  };
+
   render() {
     const disableInfo = {
       ...this.state.ingredients,
@@ -74,7 +78,10 @@ class PhoboBuilder extends Component {
     }
     return (
       <Aux>
-        <Modal show={this.state.purchasing}>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+        >
           <OrderSummary ingredients={this.state.ingredients}></OrderSummary>
         </Modal>
         <Phobo ingredients={this.state.ingredients} />
