@@ -69,6 +69,10 @@ class PhoboBuilder extends Component {
     this.setState({ purchasing: false });
   };
 
+  purchaseContinueHandler = () => {
+    alert("You continue!");
+  };
+
   render() {
     const disableInfo = {
       ...this.state.ingredients,
@@ -82,7 +86,11 @@ class PhoboBuilder extends Component {
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
         >
-          <OrderSummary ingredients={this.state.ingredients}></OrderSummary>
+          <OrderSummary
+            ingredients={this.state.ingredients}
+            purchaseCanceled={this.purchaseCancelHandler}
+            purchaseContinued={this.purchaseContinueHandler}
+          ></OrderSummary>
         </Modal>
         <Phobo ingredients={this.state.ingredients} />
         <BuildControls
