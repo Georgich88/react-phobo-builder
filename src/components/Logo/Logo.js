@@ -1,5 +1,5 @@
 import React from "react";
-import PhoboLogo from "../../assets/images/logo.png";
+import PhoboLogo from "../../assets/images/phobo-logo.png";
 import classes from "./Logo.css";
 
 const Logo = (props) => (
