@@ -33,7 +33,7 @@ class PhoboIngredient extends Component {
     return ingredient;
   }
 }
-
+// TODO: add prop types validation
 PhoboIngredient.propTypes = {
   type: PropTypes.string.isRequired,
 };
