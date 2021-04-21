@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import "./App.css";
-import Layout from "./components/Layout/Layout";
+import Layout from "./hoc/Layout/Layout";
 import PhoboBuilder from "./containers/PhoboBuilder/PhoboBuilder";
 
 class App extends Component {

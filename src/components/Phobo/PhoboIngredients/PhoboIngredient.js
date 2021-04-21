@@ -8,7 +8,7 @@ class PhoboIngredient extends Component {
     let ingredient = null;
     switch (this.props.type) {
       case "bread-bottom":
-        ingredient = <div className={classes.BreadBottom}></div>;
+        ingredient = <div className={classes.Bowl}></div>;
         break;
       case "bread-top":
         ingredient = (
